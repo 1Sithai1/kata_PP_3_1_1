@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<link rel="stylesheet" href="/styleUsers.css" th:href="@{../static/styleUsers.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о пользователе</title>
+</head>
+<body class="bodyEdit">
+<form th:method="PATCH" th:action="@{/{id}(id=${users.getId()})}" th:object="${users}">
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                <label for="name">Имя: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{name}" id="name"/>
+            </td>
+            <td>
+                <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="lastname">Фамилия: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{lastName}" id="lastname"/>
+            </td>
+            <td>
+                <div style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="email">email: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{email}" id="email"/>
+            </td>
+            <td>
+                <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Готово"/>
+            </td>
+            <td>
+                <input type="button" th:value="Отмена" onclick="window.location.href = '/'">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
