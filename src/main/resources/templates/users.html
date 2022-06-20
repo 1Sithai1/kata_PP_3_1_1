@@ -4,40 +4,38 @@
 <link rel="stylesheet" type="text/css" href="/styleUsers.css" th:href="@{../static/styleUsers.css}">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/bootstrap.css" th:href="@{../static/bootstrap.css}">
+    <link rel="icon" href="../static/image/spring_logo.png" sizes="16x16 32x32" type="image/png">
     <title>Пользователи</title>
 </head>
 <body>
-<table class="table">
+<table class="table table-hover col-sm-7">
     <thead>
-    <tbody>
     <tr>
         <th>Имя</th>
         <th>Фамилия</th>
         <th>email</th>
-        <th></th>
-        <th></th>
     </tr>
-    <th:block th:each="user : ${users}">
-        <tr>
-            <td th:text="${user.getName()}"></td>
-            <td th:text="${user.getLastName()}"></td>
-            <td th:text="${user.getEmail()}"></td>
-            <td>
-                <form th:action="@{/{id}(id=${user.getId()} + '/edit')}">
-                    <input type="submit" value="Обновить"/>
-                </form>
-            </td>
-            <td>
-                <form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
-                    <input type="submit" value="Удалить"/>
-                </form>
-            </td>
-        </tr>
-    </th:block>
+    <tbody id="tbodyUsers">
     </tbody>
 </table>
+
 <div class="centre">
-    <input type="button" th:value="Добавить" onclick="window.location.href = 'users/new'">
+    <button type="button" class="btn btn-info" onclick="window.location.href = 'users/new'">Добавить</button>
 </div>
+
+<div id="pagingUsers">
+
+</div>
+<br>
+
+<nav aria-label="...">
+    <ul class="pagination pagination-sm justify-content-center" id="newPaging">
+
+    </ul>
+</nav>
+
+<script src="../static/paging.js"></script>
+<script src="/static/bootstrap.bundle.js"></script>
 </body>
 </html>
